@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Ration</string>
+
+    <string name="Make_a_diet_for_the_week">Составить рацион на неделю</string>
+    <string name="Add_product">Добавить продукты</string>
+    <string name="Calculate">Подсчитать</string>
+</resources>
