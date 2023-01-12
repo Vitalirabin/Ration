@@ -6,6 +6,6 @@
 
     <fragment
         android:id="@+id/calculateFragment"
-        android:name="com.example.ration.CalculateFragment"
+        android:name="com.example.ration.calculate.CalculateFragment"
         android:label="CalculateFragment" />
 </navigation>
