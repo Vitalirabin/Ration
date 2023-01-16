@@ -1,4 +1,4 @@
-package com.example.ration.chooseProduct
+package com.example.ration.calculate
 
 import androidx.recyclerview.widget.DiffUtil
 import com.example.ration.ProductModel

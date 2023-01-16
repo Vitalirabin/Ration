@@ -2,7 +2,13 @@
     <string name="app_name">Ration</string>
 
     <string name="make_a_diet_for_the_week">Составить рацион на неделю</string>
-    <string name="add_product">Добавить продукты</string>
-    <string name="calculate">Подсчитать</string>
-    <string name="end_choose_product">Звкончить выбор продуктов</string>
+    <string name="add_product">Добавить продукт</string>
+    <string name="delete">Удалить</string>
+    <string name="enter_mass">Введите массу</string>
+    <string name="calories">Калории</string>
+    <string name="fat">Жиры</string>
+    <string name="protein">Белки</string>
+    <string name="carbohydrate">Углеводы</string>
+    <string name="choose_products">Выберите продукты</string>
+    <string name="added_product">Продукт добавлен</string>
 </resources>

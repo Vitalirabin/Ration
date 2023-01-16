@@ -1,9 +1,15 @@
 package com.example.ration
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "product")
 data class ProductModel(
-    val name:String,
-    val calories:Double,
-    val protein:Double,
-    val fat:Double,
-    val carbohydrate:Double
+    @PrimaryKey
+    val name: String,
+    val calories: Double,
+    val protein: Double,
+    val fat: Double,
+    val carbohydrate: Double,
+    var weight: Double
 )

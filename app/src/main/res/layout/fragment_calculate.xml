@@ -17,7 +17,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/added_product_recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="156dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -27,28 +27,63 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/add_product"
-            app:layout_constraintBottom_toTopOf="@+id/calculate_button"
+            app:layout_constraintBottom_toTopOf="@+id/make_a_diet_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+            app:layout_constraintTop_toBottomOf="@+id/calculate_fat_text_view" />
 
         <Button
-            android:id="@+id/calculate_button"
+            android:id="@+id/make_a_diet_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:text="@string/calculate"
+            android:visibility="invisible"
+            android:text="@string/make_a_diet_for_the_week"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+        <TextView
+            android:id="@+id/calculate_calories_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="56dp"
+            android:textColor="@color/black"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/added_product_recycler_view">
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintTop_toBottomOf="@+id/added_product_recycler_view" />
+
+        <TextView
+            android:id="@+id/calculate_fat_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/calculate_calories_text_view" />
+
+        <TextView
+            android:id="@+id/calculate_carbohydrate_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/calculate_protein_text_view"
+            app:layout_constraintStart_toEndOf="@+id/calculate_fat_text_view"
+            app:layout_constraintTop_toTopOf="@+id/calculate_fat_text_view" />
+
+        <TextView
+            android:id="@+id/calculate_protein_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/calculate_carbohydrate_text_view" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
