@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/calculateFragment">
+    app:startDestination="@id/rationFragment">
 
     <fragment
         android:id="@+id/calculateFragment"
@@ -11,15 +11,6 @@
         <action
             android:id="@+id/action_calculateFragment_to_choseProductFromDBDialogFragment"
             app:destination="@id/choseProductFromDBDialogFragment" />
-        <action
-            android:id="@+id/action_calculateFragment_to_addProductToDBFragment"
-            app:destination="@id/addProductToDBFragment" />
-        <action
-            android:id="@+id/action_calculateFragment_to_fragmentDeleteProductFromDB"
-            app:destination="@id/fragmentDeleteProductFromDB" />
-        <action
-            android:id="@+id/action_calculateFragment_to_rationFragment"
-            app:destination="@id/rationFragment" />
     </fragment>
 
     <dialog

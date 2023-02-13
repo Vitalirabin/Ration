@@ -16,8 +16,8 @@ class ChooseDialog : DialogFragment() {
     private val name by lazy { args.name }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val dialog = activity?.let { actvt ->
-            val builder = MaterialAlertDialogBuilder(actvt)
+        val dialog = activity?.let { activity ->
+            val builder = MaterialAlertDialogBuilder(activity)
             builder.setPositiveButton(R.string.yes) { _, _ ->
                 deleteViewModel.deleteProduct(name)
                 Toast.makeText(

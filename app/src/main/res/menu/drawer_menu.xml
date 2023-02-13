@@ -3,12 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/calculateFragment"
-        android:title="@string/calculator_calories" />
-
-    <item
         android:id="@+id/rationFragment"
         android:title="@string/create_ration" />
+    <item
+        android:id="@+id/calculateFragment"
+        android:title="@string/calculator_calories" />
 
     <item
         android:id="@+id/addProductToDBFragment"

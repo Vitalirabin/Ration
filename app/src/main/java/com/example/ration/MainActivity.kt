@@ -19,8 +19,13 @@ class MainActivity : AppCompatActivity() {
         val sideBar = findViewById<NavigationView>(R.id.nav_view)
         sideBar.setupWithNavController(host.navController)
         val appBarConfiguration = AppBarConfiguration(
-            host.navController.graph,
-            drawerLayout = findViewById<DrawerLayout>(R.id.drawer_layout)
+            setOf(
+                R.id.addProductToDBFragment,
+                R.id.fragmentDeleteProductFromDB,
+                R.id.rationFragment,
+                R.id.calculateFragment
+            ),
+            drawerLayout = findViewById<DrawerLayout>(R.id.drawer_layout),
         )
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         toolbar.setupWithNavController(host.navController, appBarConfiguration)
