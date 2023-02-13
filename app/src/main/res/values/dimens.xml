@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="button_ration_padding">4dp</dimen>
+    <dimen name="text_view_ration_horizontal_bias">0.2</dimen>
+    <dimen name="title_ration_margin_start">16dp</dimen>
+
+    <dimen name="item_ration_text_size">13sp</dimen>
+    <dimen name="title_ration_product_margin_start">4dp</dimen>
+
+    <dimen name="checkbox_activity_height">48dp</dimen>
+
+    <dimen name="button_width">96dp</dimen>
+    <dimen name="button_text_size">11sp</dimen>
+
+</resources>

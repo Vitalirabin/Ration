@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/calculateFragment"
+        android:title="@string/calculator_calories" />
+
+    <item
+        android:id="@+id/rationFragment"
+        android:title="@string/create_ration" />
+
+    <item
+        android:id="@+id/addProductToDBFragment"
+        android:title="@string/add_product_to_DB" />
+
+    <item
+        android:id="@+id/fragmentDeleteProductFromDB"
+        android:title="@string/delete_product_from_DB" />
+</menu>

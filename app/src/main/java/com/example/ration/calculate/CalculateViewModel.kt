@@ -1,5 +1,6 @@
 package com.example.ration.calculate
 
+import android.content.ContentValues
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,9 +10,16 @@ import com.example.ration.data_base.DatabaseHelper
 import com.example.ration.data_base.DatabaseHelper.Companion.COLUMN_CALORIES
 import com.example.ration.data_base.DatabaseHelper.Companion.COLUMN_CARBOHYDRATE
 import com.example.ration.data_base.DatabaseHelper.Companion.COLUMN_FAT
+import com.example.ration.data_base.DatabaseHelper.Companion.COLUMN_ID
 import com.example.ration.data_base.DatabaseHelper.Companion.COLUMN_NAME
 import com.example.ration.data_base.DatabaseHelper.Companion.COLUMN_PROTEIN
+import com.example.ration.data_base.DatabaseHelper.Companion.TABLE_BREAKFAST
+import com.example.ration.data_base.DatabaseHelper.Companion.TABLE_DRINKS
+import com.example.ration.data_base.DatabaseHelper.Companion.TABLE_HOTTER
+import com.example.ration.data_base.DatabaseHelper.Companion.TABLE_SALADS
+import com.example.ration.data_base.DatabaseHelper.Companion.TABLE_SECOND
 import kotlinx.coroutines.launch
+
 
 class CalculateViewModel(private val repository: CalculateRepository) : ViewModel() {
 
@@ -22,23 +30,14 @@ class CalculateViewModel(private val repository: CalculateRepository) : ViewMode
 
     val listChoosedProduct = MutableLiveData<MutableList<ProductModel>>()
     val listAllProduct = MutableLiveData<MutableList<ProductModel>>()
-    var listAllProductInString = listAllProduct.value?.map {
-        String.format(
-            "%s %skKal Белки:%sг Жири:%sг Углеводы:%sг",
-            it.name,
-            it.calories,
-            it.protein,
-            it.fat,
-            it.carbohydrate
-        )
-    }
-        ?.toTypedArray()
+    var listAllDialogProduct = mutableListOf<DialogProductModel>()
 
     fun calculatingCPFC() {
         calories.value = 0.0
         protein.value = 0.0
         fat.value = 0.0
         carbohydrate.value = 0.0
+        listChoosedProduct.value?.distinct()
         listChoosedProduct.value?.forEach {
             calories.value = it.calories * it.weight / 100 + calories.value!!
             protein.value = it.protein * it.weight / 100 + protein.value!!
@@ -49,18 +48,24 @@ class CalculateViewModel(private val repository: CalculateRepository) : ViewMode
 
     fun getAllProducts() {
         viewModelScope.launch {
-            listAllProduct.value = repository.getAllProducts().toMutableList()
-            listAllProductInString = listAllProduct.value?.map {
-                String.format(
-                    "%s\n%skKal, Жири:%sг, Углеводы:%sг, Белки:%sг",
+            val list = repository.getAllProducts().toMutableList()
+            listAllProduct.value = list
+            list.forEach {
+                val element = DialogProductModel(
                     it.name,
-                    it.calories,
-                    it.fat,
-                    it.carbohydrate,
-                    it.protein
+                    String.format(
+                        "%skKal Белки:%sг Жири:%sг Углеводы:%sг",
+                        it.calories,
+                        it.protein,
+                        it.fat,
+                        it.carbohydrate
+                    )
                 )
+                if (!listAllDialogProduct.contains(element)) {
+                    listAllDialogProduct.add(element)
+                }
             }
-                ?.toTypedArray()
+            listAllDialogProduct.sortBy { it.title }
         }
     }
 
@@ -70,7 +75,11 @@ class CalculateViewModel(private val repository: CalculateRepository) : ViewMode
         }
         viewModelScope.launch {
             val list = listChoosedProduct.value
-            list?.add(repository.getProductByName(name))
+            val product = repository.getProductByName(name)
+            product.weight = 0.0
+            if (list?.contains(product) == false) {
+                list.add(product)
+            }
             listChoosedProduct.value = list ?: mutableListOf()
         }
     }
@@ -83,11 +92,15 @@ class CalculateViewModel(private val repository: CalculateRepository) : ViewMode
         }
     }
 
-    fun addDefaultProductsToDB(context: Context) {
+    fun addNewProductToDB(productModel: ProductModel) {
+        viewModelScope.launch { repository.addProductToDB(productModel) }
+    }
+
+    private fun addDefaultProductsToTable(context: Context, table: String) {
         val databaseHelper = DatabaseHelper(context);
         databaseHelper.create_db();
         val db = databaseHelper.open()
-        val userCursor = db.rawQuery("select * from " + DatabaseHelper.TABLE, null);
+        val userCursor = db.rawQuery("select * from $table", null);
         viewModelScope.launch {
             while (userCursor.moveToNext()) {
                 val productModel =
@@ -112,11 +125,21 @@ class CalculateViewModel(private val repository: CalculateRepository) : ViewMode
                             userCursor.getColumnIndex(
                                 COLUMN_CARBOHYDRATE
                             ) ?: 0
-                        ).toDouble(), 0.0
+                        ).toDouble(), table, 0.0
                     )
                 repository.addProductToDB(productModel)
             }
             userCursor.close()
+            db.close()
+            databaseHelper.close()
         }
+    }
+
+    fun addDefaultProductsToDB(context: Context) {
+        addDefaultProductsToTable(context, TABLE_BREAKFAST)
+        addDefaultProductsToTable(context, TABLE_DRINKS)
+        addDefaultProductsToTable(context, TABLE_HOTTER)
+        addDefaultProductsToTable(context, TABLE_SECOND)
+        addDefaultProductsToTable(context, TABLE_SALADS)
     }
 }

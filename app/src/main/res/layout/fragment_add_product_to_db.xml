@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/name_edit_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/enter_name"
+        android:inputType="text"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rules" />
+
+    <EditText
+        android:id="@+id/calories_edit_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/enter_calories"
+        android:inputType="number"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="@+id/name_edit_text_view"
+        app:layout_constraintTop_toBottomOf="@+id/name_edit_text_view" />
+
+    <EditText
+        android:id="@+id/fat_edit_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/enter_fat"
+        android:inputType="number"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="@+id/calories_edit_text_view"
+        app:layout_constraintTop_toBottomOf="@+id/calories_edit_text_view" />
+
+    <EditText
+        android:id="@+id/protein_edit_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/enter_protein"
+        android:inputType="number"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="@+id/fat_edit_text_view"
+        app:layout_constraintTop_toBottomOf="@+id/fat_edit_text_view" />
+
+    <EditText
+        android:id="@+id/carbohydrate_edit_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/enter_carbohydrate"
+        android:inputType="number"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="@+id/protein_edit_text_view"
+        app:layout_constraintTop_toBottomOf="@+id/protein_edit_text_view" />
+
+    <Button
+        android:id="@+id/breakfast_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/breakfast"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/carbohydrate_edit_text_view"
+        app:layout_constraintTop_toBottomOf="@+id/choose_time_to_eat_text_view" />
+
+    <Button
+        android:id="@+id/soup_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/soup"
+        app:layout_constraintEnd_toEndOf="@+id/breakfast_button"
+        app:layout_constraintStart_toStartOf="@+id/breakfast_button"
+        app:layout_constraintTop_toBottomOf="@+id/breakfast_button" />
+
+    <Button
+        android:id="@+id/second_courses_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/second_courses"
+        app:layout_constraintEnd_toEndOf="@+id/soup_button"
+        app:layout_constraintStart_toStartOf="@+id/soup_button"
+        app:layout_constraintTop_toBottomOf="@+id/soup_button" />
+
+    <TextView
+        android:id="@+id/choose_time_to_eat_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/choose_time_to_eat"
+        app:layout_constraintStart_toStartOf="@+id/carbohydrate_edit_text_view"
+        app:layout_constraintTop_toBottomOf="@+id/carbohydrate_edit_text_view" />
+
+    <Button
+        android:id="@+id/drinks_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/drinks"
+        app:layout_constraintEnd_toEndOf="@+id/second_courses_button"
+        app:layout_constraintStart_toStartOf="@+id/second_courses_button"
+        app:layout_constraintTop_toBottomOf="@+id/second_courses_button" />
+
+    <Button
+        android:id="@+id/salad_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/salad"
+        app:layout_constraintEnd_toEndOf="@+id/drinks_button"
+        app:layout_constraintStart_toStartOf="@+id/drinks_button"
+        app:layout_constraintTop_toBottomOf="@+id/drinks_button" />
+
+    <TextView
+        android:id="@+id/rules"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_product_rules"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

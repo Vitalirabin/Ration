@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/item_number_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/breakfast_title_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/title_ration_margin_start"
+        android:text="@string/breakfast"
+        app:layout_constraintStart_toStartOf="@+id/item_number_text_view"
+        app:layout_constraintTop_toBottomOf="@+id/item_number_text_view" />
+
+    <TextView
+        android:id="@+id/breakfast_product_title_text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/title_ration_product_margin_start"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="@dimen/title_ration_product_margin_start"
+        android:textAlignment="center"
+        android:textSize="@dimen/item_ration_text_size"
+        app:layout_constraintEnd_toStartOf="@+id/change_breakfast_product_button"
+        app:layout_constraintHorizontal_bias="@dimen/text_view_ration_horizontal_bias"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/breakfast_title_text_view" />
+
+    <TextView
+        android:id="@+id/breakfast_product_subtitle_text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/title_ration_product_margin_start"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="@dimen/title_ration_product_margin_start"
+        android:textAlignment="center"
+        android:textSize="@dimen/item_ration_text_size"
+        app:layout_constraintEnd_toStartOf="@+id/change_breakfast_product_button"
+        app:layout_constraintHorizontal_bias="@dimen/text_view_ration_horizontal_bias"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/breakfast_product_title_text_view" />
+
+    <TextView
+        android:id="@+id/breakfast_drink_title_text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/title_ration_product_margin_start"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="@dimen/title_ration_product_margin_start"
+        android:textAlignment="center"
+        android:textSize="@dimen/item_ration_text_size"
+        app:layout_constraintEnd_toStartOf="@+id/change_breakfast_drink_button"
+        app:layout_constraintHorizontal_bias="@dimen/text_view_ration_horizontal_bias"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/breakfast_product_subtitle_text_view" />
+
+    <TextView
+        android:id="@+id/breakfast_drink_subtitle_text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/title_ration_product_margin_start"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="@dimen/title_ration_product_margin_start"
+        android:textAlignment="center"
+        android:textSize="@dimen/item_ration_text_size"
+        app:layout_constraintEnd_toStartOf="@+id/change_breakfast_drink_button"
+        app:layout_constraintHorizontal_bias="@dimen/text_view_ration_horizontal_bias"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/breakfast_drink_title_text_view" />
+
+    <TextView
+        android:id="@+id/lunch_title_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/title_ration_margin_start"
+        android:layout_marginTop="4dp"
+        android:text="@string/lunch"
+        app:layout_constraintStart_toStartOf="@+id/item_number_text_view"
+        app:layout_constraintTop_toBottomOf="@+id/breakfast_drink_subtitle_text_view" />
+
+    <TextView
+        android:id="@+id/lunch_second_title_text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/title_ration_product_margin_start"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="@dimen/title_ration_product_margin_start"
+        android:textAlignment="center"
+        android:textSize="@dimen/item_ration_text_size"
+        app:layout_constraintEnd_toStartOf="@+id/change_lunch_second_button"
+        app:layout_constraintHorizontal_bias="@dimen/text_view_ration_horizontal_bias"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lunch_title_text_view" />
+
+    <TextView
+        android:id="@+id/lunch_second_subtitle_text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/title_ration_product_margin_start"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="@dimen/title_ration_product_margin_start"
+        android:textAlignment="center"
+        android:textSize="@dimen/item_ration_text_size"
+        app:layout_constraintEnd_toStartOf="@+id/change_lunch_second_button"
+        app:layout_constraintHorizontal_bias="@dimen/text_view_ration_horizontal_bias"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lunch_second_title_text_view" />
+
+    <TextView
+        android:id="@+id/lunch_hotter_title_text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/title_ration_product_margin_start"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="@dimen/title_ration_product_margin_start"
+        android:textAlignment="center"
+        android:textSize="@dimen/item_ration_text_size"
+        app:layout_constraintEnd_toStartOf="@+id/change_lunch_hotter_button"
+        app:layout_constraintHorizontal_bias="@dimen/text_view_ration_horizontal_bias"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lunch_second_subtitle_text_view" />
+
+    <TextView
+        android:id="@+id/lunch_hotter_subtitle_text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/title_ration_product_margin_start"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="@dimen/title_ration_product_margin_start"
+        android:textAlignment="center"
+        android:textSize="@dimen/item_ration_text_size"
+        app:layout_constraintEnd_toStartOf="@+id/change_lunch_hotter_button"
+        app:layout_constraintHorizontal_bias="@dimen/text_view_ration_horizontal_bias"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lunch_hotter_title_text_view" />
+
+    <TextView
+        android:id="@+id/lunch_salad_title_text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/title_ration_product_margin_start"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="@dimen/title_ration_product_margin_start"
+        android:textAlignment="center"
+        android:textSize="@dimen/item_ration_text_size"
+        app:layout_constraintEnd_toStartOf="@+id/change_lunch_salad_button"
+        app:layout_constraintHorizontal_bias="@dimen/text_view_ration_horizontal_bias"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lunch_hotter_subtitle_text_view" />
+
+    <TextView
+        android:id="@+id/lunch_salad_subtitle_text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/title_ration_product_margin_start"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="@dimen/title_ration_product_margin_start"
+        android:textAlignment="center"
+        android:textSize="@dimen/item_ration_text_size"
+        app:layout_constraintEnd_toStartOf="@+id/change_lunch_salad_button"
+        app:layout_constraintHorizontal_bias="@dimen/text_view_ration_horizontal_bias"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lunch_salad_title_text_view" />
+
+    <TextView
+        android:id="@+id/lunch_drink_title_text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/title_ration_product_margin_start"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="@dimen/title_ration_product_margin_start"
+        android:textAlignment="center"
+        android:textSize="@dimen/item_ration_text_size"
+        app:layout_constraintEnd_toStartOf="@+id/change_lunch_drink_button"
+        app:layout_constraintHorizontal_bias="@dimen/text_view_ration_horizontal_bias"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lunch_salad_subtitle_text_view" />
+
+    <TextView
+        android:id="@+id/lunch_drink_subtitle_text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/title_ration_product_margin_start"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="@dimen/title_ration_product_margin_start"
+        android:textAlignment="center"
+        android:textSize="@dimen/item_ration_text_size"
+        app:layout_constraintEnd_toStartOf="@+id/change_lunch_drink_button"
+        app:layout_constraintHorizontal_bias="@dimen/text_view_ration_horizontal_bias"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lunch_drink_title_text_view" />
+
+    <TextView
+        android:id="@+id/dinner_title_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/title_ration_margin_start"
+        android:layout_marginTop="4dp"
+        android:text="@string/dinner"
+        app:layout_constraintStart_toStartOf="@+id/item_number_text_view"
+        app:layout_constraintTop_toBottomOf="@+id/lunch_drink_subtitle_text_view" />
+
+    <TextView
+        android:id="@+id/dinner_second_title_text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/title_ration_product_margin_start"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="@dimen/title_ration_product_margin_start"
+        android:textAlignment="center"
+        android:textSize="@dimen/item_ration_text_size"
+        app:layout_constraintEnd_toStartOf="@+id/change_dinner_second_button"
+        app:layout_constraintHorizontal_bias="@dimen/text_view_ration_horizontal_bias"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dinner_title_text_view" />
+
+    <TextView
+        android:id="@+id/dinner_second_subtitle_text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/title_ration_product_margin_start"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="@dimen/title_ration_product_margin_start"
+        android:textAlignment="center"
+        android:textSize="@dimen/item_ration_text_size"
+        app:layout_constraintEnd_toStartOf="@+id/change_dinner_second_button"
+        app:layout_constraintHorizontal_bias="@dimen/text_view_ration_horizontal_bias"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dinner_second_title_text_view" />
+
+
+    <TextView
+        android:id="@+id/dinner_salad_title_text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/title_ration_product_margin_start"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="@dimen/title_ration_product_margin_start"
+        android:textAlignment="center"
+        android:textSize="@dimen/item_ration_text_size"
+        app:layout_constraintEnd_toStartOf="@+id/change_dinner_salad_button"
+        app:layout_constraintHorizontal_bias="@dimen/text_view_ration_horizontal_bias"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dinner_second_subtitle_text_view" />
+
+    <TextView
+        android:id="@+id/dinner_salad_subtitle_text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/title_ration_product_margin_start"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="@dimen/title_ration_product_margin_start"
+        android:textAlignment="center"
+        android:textSize="@dimen/item_ration_text_size"
+        app:layout_constraintEnd_toStartOf="@+id/change_dinner_salad_button"
+        app:layout_constraintHorizontal_bias="@dimen/text_view_ration_horizontal_bias"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dinner_salad_title_text_view" />
+
+    <TextView
+        android:id="@+id/dinner_drink_title_text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/title_ration_product_margin_start"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="@dimen/title_ration_product_margin_start"
+        android:textAlignment="center"
+        android:textSize="@dimen/item_ration_text_size"
+        app:layout_constraintEnd_toStartOf="@+id/change_dinner_drink_button"
+        app:layout_constraintHorizontal_bias="@dimen/text_view_ration_horizontal_bias"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dinner_salad_subtitle_text_view" />
+
+    <TextView
+        android:id="@+id/dinner_drink_subtitle_text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/title_ration_product_margin_start"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="@dimen/title_ration_product_margin_start"
+        android:textAlignment="center"
+        android:textSize="@dimen/item_ration_text_size"
+        app:layout_constraintEnd_toStartOf="@+id/change_dinner_drink_button"
+        app:layout_constraintHorizontal_bias="@dimen/text_view_ration_horizontal_bias"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dinner_drink_title_text_view" />
+
+    <Button
+        android:id="@+id/change_breakfast_product_button"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/button_ration_padding"
+        android:text="@string/change_product"
+        android:textSize="@dimen/button_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/breakfast_product_title_text_view" />
+
+    <Button
+        android:id="@+id/change_breakfast_drink_button"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/button_ration_padding"
+        android:text="@string/change_product"
+        android:textSize="@dimen/button_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/breakfast_drink_title_text_view" />
+
+    <Button
+        android:id="@+id/change_lunch_second_button"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/button_ration_padding"
+        android:text="@string/change_product"
+        android:textSize="@dimen/button_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/lunch_second_title_text_view" />
+
+    <Button
+        android:id="@+id/change_lunch_hotter_button"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/button_ration_padding"
+        android:text="@string/change_product"
+        android:textSize="@dimen/button_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/lunch_hotter_title_text_view" />
+
+    <Button
+        android:id="@+id/change_lunch_salad_button"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/button_ration_padding"
+        android:text="@string/change_product"
+        android:textSize="@dimen/button_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/lunch_salad_title_text_view" />
+
+    <Button
+        android:id="@+id/change_lunch_drink_button"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/button_ration_padding"
+        android:text="@string/change_product"
+        android:textSize="@dimen/button_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/lunch_drink_title_text_view" />
+
+    <Button
+        android:id="@+id/change_dinner_second_button"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/button_ration_padding"
+        android:text="@string/change_product"
+        android:textSize="@dimen/button_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/dinner_second_title_text_view" />
+
+    <Button
+        android:id="@+id/change_dinner_salad_button"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/button_ration_padding"
+        android:text="@string/change_product"
+        android:textSize="@dimen/button_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/dinner_salad_title_text_view" />
+
+    <Button
+        android:id="@+id/change_dinner_drink_button"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/button_ration_padding"
+        android:text="@string/change_product"
+        android:textSize="@dimen/button_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/dinner_drink_title_text_view" />
+
+    <View
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/breakfast_drink_subtitle_text_view" />
+
+    <View
+        android:id="@+id/imageView1"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lunch_drink_subtitle_text_view" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

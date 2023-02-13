@@ -49,16 +49,21 @@ internal class DatabaseHelper(private val myContext: Context) :
     companion object {
         private var DB_PATH // полный путь к базе данных
                 : String = ""
-        private const val DB_NAME = "kalorii.db"
+        private const val DB_NAME = "products.db"
         private const val SCHEMA = 1 // версия базы данных
         const val TABLE = "Kalorii" // название таблицы в бд
+        const val TABLE_BREAKFAST = "Breakfast" // название таблицы в бд
+        const val TABLE_DRINKS = "Drinks" // название таблицы в бд
+        const val TABLE_HOTTER = "Hotter" // название таблицы в бд
+        const val TABLE_SALADS = "Salads" // название таблицы в бд
+        const val TABLE_SECOND = "Second" // название таблицы в бд
 
         // названия столбцов
         const val COLUMN_ID = "_id"
         const val COLUMN_NAME = "name"
         const val COLUMN_CALORIES = "kKal"
-        const val COLUMN_PROTEIN = "belki"
-        const val COLUMN_FAT = "zhiry"
-        const val COLUMN_CARBOHYDRATE = "uglevody"
+        const val COLUMN_PROTEIN = "protein"
+        const val COLUMN_FAT = "fats"
+        const val COLUMN_CARBOHYDRATE = "carbohydrates"
     }
 }

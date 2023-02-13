@@ -6,14 +6,88 @@
 
     <fragment
         android:id="@+id/calculateFragment"
-        android:name="com.example.ration.calculate.CalculateFragment"
-        android:label="CalculateFragment" >
+        android:name="com.example.ration.calculate.fragment.CalculateFragment"
+        android:label="CalculateFragment">
         <action
             android:id="@+id/action_calculateFragment_to_choseProductFromDBDialogFragment"
             app:destination="@id/choseProductFromDBDialogFragment" />
+        <action
+            android:id="@+id/action_calculateFragment_to_addProductToDBFragment"
+            app:destination="@id/addProductToDBFragment" />
+        <action
+            android:id="@+id/action_calculateFragment_to_fragmentDeleteProductFromDB"
+            app:destination="@id/fragmentDeleteProductFromDB" />
+        <action
+            android:id="@+id/action_calculateFragment_to_rationFragment"
+            app:destination="@id/rationFragment" />
     </fragment>
+
     <dialog
         android:id="@+id/choseProductFromDBDialogFragment"
-        android:name="com.example.ration.calculate.ChoseProductFromDBDialogFragment"
+        android:name="com.example.ration.calculate.fragment.ChoseProductFromDBDialogFragment"
         android:label="ChoseProductFromDBDialogFragment" />
+
+    <fragment
+        android:id="@+id/addProductToDBFragment"
+        android:name="com.example.ration.calculate.fragment.AddProductToDBFragment"
+        android:label="AddProductToDBFragment" />
+    <fragment
+        android:id="@+id/rationFragment"
+        android:name="com.example.ration.ration.fragment.RationFragment"
+        android:label="RationFragment" >
+        <action
+            android:id="@+id/action_rationFragment_to_changeProductDialogFragment"
+            app:destination="@id/changeProductDialogFragment" />
+        <action
+            android:id="@+id/action_rationFragment_to_enterDataOfHumanFragment"
+            app:destination="@id/enterDataOfHumanFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/changeProductDialogFragment"
+        android:name="com.example.ration.ration.fragment.ChangeProductDialogFragment"
+        android:label="ChangeProductDialogFragment" >
+        <argument
+            android:name="timeToEat"
+            app:argType="string" />
+        <argument
+            android:name="category"
+            app:argType="string" />
+        <argument android:name="position"
+            app:argType="integer" />
+        <argument
+            android:name="calories"
+            app:argType="integer" />
+    </dialog>
+    <fragment
+        android:id="@+id/fragmentDeleteProductFromDB"
+        android:name="com.example.ration.delete.DeleteProductFromDBFragment"
+        android:label="FragmentDeleteProductFromDB" >
+        <action
+            android:id="@+id/action_fragmentDeleteProductFromDB_to_chooseDialog"
+            app:destination="@id/chooseDialog" />
+    </fragment>
+    <dialog
+        android:id="@+id/chooseDialog"
+        android:name="com.example.ration.delete.ChooseDialog"
+        android:label="ChooseDialog" >
+        <argument
+            android:name="name"
+            app:argType="string" />
+    </dialog>
+    <dialog
+        android:id="@+id/rulesDialog"
+        android:name="com.example.ration.ration.fragment.RulesDialog"
+        android:label="RulesDialog" >
+        <argument
+            android:name="message"
+            app:argType="string" />
+    </dialog>
+    <fragment
+        android:id="@+id/enterDataOfHumanFragment"
+        android:name="com.example.ration.ration.fragment.EnterDataOfHumanFragment"
+        android:label="EnterDataOfHumanFragment" >
+        <action
+            android:id="@+id/action_enterDataOfHumanFragment_to_rulesDialog"
+            app:destination="@id/rulesDialog" />
+    </fragment>
 </navigation>
