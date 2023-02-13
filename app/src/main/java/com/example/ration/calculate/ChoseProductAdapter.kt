@@ -54,7 +54,7 @@ class ChoseProductAdapter(private val onClickListener:OnDialogItemClick) :
                     val filteredList = ArrayList<DialogProductModel>()
                     productList
                         .filter {
-                            (it.title.contains(constraint!!))
+                            (it.title.toLowerCase(Locale.ROOT).contains(constraint.toString().toLowerCase(Locale.ROOT)))
                         }
                         .forEach { filteredList.add(it) }
                     productListFiltered = filteredList

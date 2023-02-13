@@ -2,12 +2,13 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/rationFragment">
+    android:label="@string/calculator_calories"
+    app:startDestination="@id/calculateFragment">
 
     <fragment
         android:id="@+id/calculateFragment"
         android:name="com.example.ration.calculate.fragment.CalculateFragment"
-        android:label="CalculateFragment">
+        android:label="@string/calculator_calories">
         <action
             android:id="@+id/action_calculateFragment_to_choseProductFromDBDialogFragment"
             app:destination="@id/choseProductFromDBDialogFragment" />
@@ -21,11 +22,11 @@
     <fragment
         android:id="@+id/addProductToDBFragment"
         android:name="com.example.ration.calculate.fragment.AddProductToDBFragment"
-        android:label="AddProductToDBFragment" />
+        android:label="@string/add_product_to_DB" />
     <fragment
         android:id="@+id/rationFragment"
         android:name="com.example.ration.ration.fragment.RationFragment"
-        android:label="RationFragment" >
+        android:label="@string/create_ration">
         <action
             android:id="@+id/action_rationFragment_to_changeProductDialogFragment"
             app:destination="@id/changeProductDialogFragment" />
@@ -36,14 +37,15 @@
     <dialog
         android:id="@+id/changeProductDialogFragment"
         android:name="com.example.ration.ration.fragment.ChangeProductDialogFragment"
-        android:label="ChangeProductDialogFragment" >
+        android:label="ChangeProductDialogFragment">
         <argument
             android:name="timeToEat"
             app:argType="string" />
         <argument
             android:name="category"
             app:argType="string" />
-        <argument android:name="position"
+        <argument
+            android:name="position"
             app:argType="integer" />
         <argument
             android:name="calories"
@@ -52,7 +54,7 @@
     <fragment
         android:id="@+id/fragmentDeleteProductFromDB"
         android:name="com.example.ration.delete.DeleteProductFromDBFragment"
-        android:label="FragmentDeleteProductFromDB" >
+        android:label="@string/delete_product_from_DB">
         <action
             android:id="@+id/action_fragmentDeleteProductFromDB_to_chooseDialog"
             app:destination="@id/chooseDialog" />
@@ -60,7 +62,7 @@
     <dialog
         android:id="@+id/chooseDialog"
         android:name="com.example.ration.delete.ChooseDialog"
-        android:label="ChooseDialog" >
+        android:label="ChooseDialog">
         <argument
             android:name="name"
             app:argType="string" />
@@ -68,7 +70,7 @@
     <dialog
         android:id="@+id/rulesDialog"
         android:name="com.example.ration.ration.fragment.RulesDialog"
-        android:label="RulesDialog" >
+        android:label="RulesDialog">
         <argument
             android:name="message"
             app:argType="string" />
@@ -76,7 +78,7 @@
     <fragment
         android:id="@+id/enterDataOfHumanFragment"
         android:name="com.example.ration.ration.fragment.EnterDataOfHumanFragment"
-        android:label="EnterDataOfHumanFragment" >
+        android:label="EnterDataOfHumanFragment">
         <action
             android:id="@+id/action_enterDataOfHumanFragment_to_rulesDialog"
             app:destination="@id/rulesDialog" />

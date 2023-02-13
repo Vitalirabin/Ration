@@ -42,6 +42,7 @@ class ChangeProductDialogFragment : DialogFragment() {
                             getString(R.string.product_changed),
                             Toast.LENGTH_SHORT
                         ).show()
+                        dialog?.cancel()
                     }
                 })
             }

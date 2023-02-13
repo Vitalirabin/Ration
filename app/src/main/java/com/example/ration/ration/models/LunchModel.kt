@@ -6,5 +6,6 @@ data class LunchModel(
     var second: ProductModel,
     var hotter: ProductModel,
     var salad: ProductModel,
-    var drink: ProductModel
+    var drink: ProductModel,
+    var calories: Int
 )

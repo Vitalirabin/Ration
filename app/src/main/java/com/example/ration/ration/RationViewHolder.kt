@@ -37,6 +37,12 @@ class RationViewHolder(private val binding: ItemRationBinding) :
         binding.dinnerDrinkTitleTextView.text = ration.dinner.drink.name
         binding.dinnerDrinkSubtitleTextView.text =
             String.format("%.0fг", ration.dinner.drink.weight)
+        binding.breakfastCaloriesTextView.text =
+            String.format("- %s kKal", ration.breakfast.calories.toString())
+        binding.lunchCaloriesTextView.text =
+            String.format("- %s kKal", ration.lunch.calories.toString())
+        binding.dinnerCaloriesTextView.text =
+            String.format("- %s kKal", ration.dinner.calories.toString())
 
         binding.changeBreakfastProductButton.setOnClickListener {
             onRationItemListener.onChangeProduct(

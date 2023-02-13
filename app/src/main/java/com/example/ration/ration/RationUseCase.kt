@@ -38,17 +38,20 @@ class RationUseCase(private val repository: RationRepository) {
         repository.getRation().forEach { it ->
             val breakfast = BreakfastModel(
                 getProductByName(it.breakfastProductName),
-                getProductByName(it.breakfastDrinkName)
+                getProductByName(it.breakfastDrinkName), 0
             )
             breakfast.drink.weight = Constants.DRINKS_WEIGHT
             breakfast.product.weight =
                 (caloriesOnDay * Constants.BREAKFAST_PART / 100 - breakfast.drink.weight * breakfast.drink.calories / 100) / (breakfast.product.calories / 100)
+            breakfast.calories = caloriesOnDay * Constants.BREAKFAST_PART / 100
             val lunch = LunchModel(
                 getProductByName(it.lunchSecondName),
                 getProductByName(it.lunchHotterkName),
                 getProductByName(it.lunchSaladName),
-                getProductByName(it.lunchDrinkName)
+                getProductByName(it.lunchDrinkName),
+                0
             )
+            lunch.calories = caloriesOnDay * Constants.LUNCH_PART / 100
             lunch.drink.weight = Constants.DRINKS_WEIGHT
             lunch.salad.weight = Constants.SALAD_WEIGHT
             lunch.hotter.weight =
@@ -58,8 +61,9 @@ class RationUseCase(private val repository: RationRepository) {
             val dinner = DinnerModel(
                 getProductByName(it.dinerSecondName),
                 getProductByName(it.dinerSaladName),
-                getProductByName(it.dinerDrinkName)
+                getProductByName(it.dinerDrinkName), 0
             )
+            dinner.calories = caloriesOnDay * Constants.DINNER_PART / 100
             dinner.drink.weight = Constants.DRINKS_WEIGHT
             dinner.salad.weight = Constants.SALAD_WEIGHT
             dinner.second.weight =
@@ -86,8 +90,9 @@ class RationUseCase(private val repository: RationRepository) {
         for (i in 1..7) {
             val breakfast = BreakfastModel(
                 breakfasts[randList(breakfasts.size)],
-                drinks[randList(drinks.size)]
+                drinks[randList(drinks.size)], 0
             )
+            breakfast.calories = caloriesOnDay * Constants.BREAKFAST_PART / 100
             breakfast.drink.weight = Constants.DRINKS_WEIGHT
             breakfast.product.weight =
                 (caloriesOnDay * Constants.BREAKFAST_PART / 100 - breakfast.drink.weight * breakfast.drink.calories / 100) / (breakfast.product.calories / 100)
@@ -95,8 +100,9 @@ class RationUseCase(private val repository: RationRepository) {
                 seconds[randList(seconds.size)],
                 hotters[randList(hotters.size)],
                 salads[randList(salads.size)],
-                drinks[randList(drinks.size)]
+                drinks[randList(drinks.size)], 0
             )
+            lunch.calories = caloriesOnDay * Constants.LUNCH_PART / 100
             lunch.drink.weight = Constants.DRINKS_WEIGHT
             lunch.salad.weight = Constants.SALAD_WEIGHT
             lunch.hotter.weight =
@@ -106,8 +112,9 @@ class RationUseCase(private val repository: RationRepository) {
             val dinner = DinnerModel(
                 seconds[randList(seconds.size)],
                 salads[randList(salads.size)],
-                drinks[randList(drinks.size)]
+                drinks[randList(drinks.size)], 0
             )
+            dinner.calories = caloriesOnDay * Constants.DINNER_PART / 100
             dinner.drink.weight = Constants.DRINKS_WEIGHT
             dinner.salad.weight = Constants.SALAD_WEIGHT
             dinner.second.weight =

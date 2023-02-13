@@ -405,4 +405,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lunch_drink_subtitle_text_view" />
 
+    <TextView
+        android:id="@+id/breakfast_calories_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        app:layout_constraintStart_toEndOf="@+id/breakfast_title_text_view"
+        app:layout_constraintTop_toTopOf="@+id/breakfast_title_text_view" />
+
+    <TextView
+        android:id="@+id/lunch_calories_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        app:layout_constraintStart_toEndOf="@+id/lunch_title_text_view"
+        app:layout_constraintTop_toTopOf="@+id/lunch_title_text_view" />
+
+    <TextView
+        android:id="@+id/dinner_calories_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        app:layout_constraintStart_toEndOf="@+id/dinner_title_text_view"
+        app:layout_constraintTop_toTopOf="@+id/dinner_title_text_view" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

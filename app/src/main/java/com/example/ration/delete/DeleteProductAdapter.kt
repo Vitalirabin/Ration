@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.ration.R
 import com.example.ration.calculate.DialogProductModel
 import com.example.ration.calculate.OnDialogItemClick
-import java.util.ArrayList
+import java.util.*
 
 
 class DeleteProductAdapter(private val onClickListener: OnDialogItemClick) :
@@ -57,7 +57,11 @@ class DeleteProductAdapter(private val onClickListener: OnDialogItemClick) :
                     val filteredList = ArrayList<DialogProductModel>()
                     productList
                         .filter {
-                            (it.title.contains(constraint!!))
+                            (it.title.toLowerCase(Locale.ROOT).contains(
+                                constraint.toString().toLowerCase(
+                                    Locale.ROOT
+                                )
+                            ))
                         }
                         .forEach { filteredList.add(it) }
                     productListFiltered = filteredList
