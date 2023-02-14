@@ -1,5 +1,7 @@
 package com.example.ration.calculate
 
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
@@ -16,19 +18,34 @@ class CalculeteAdapter(
     class MyViewHolder(private val binding: ItemCalculateProductBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(
-            productModel: ProductModel, onItemListener: OnItemListener, position: Int
+            productModel: ProductModel,
+            onItemListener: OnItemListener,
         ) {
-            binding.itemCalculateTitleTextView.text = productModel.name
-            if (productModel.weight != 0)
-                binding.itemCalculateWeight.setText(productModel.weight.toString())
-            else binding.itemCalculateWeight.setText("")
-            binding.itemCalculateWeight.addTextChangedListener {
-                if (binding.itemCalculateWeight.text.toString() != "") {
-                    onItemListener.onChangeWeight(
-                        productModel.name, it.toString().toInt()
-                    )
+            val textWatcher = object : TextWatcher {
+                override fun beforeTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) {
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+                    if (s.toString() != "") {
+                        onItemListener.onChangeWeight(
+                            productModel.name, s.toString().toInt()
+                        )
+                    }
                 }
             }
+            binding.itemCalculateTitleTextView.text = productModel.name
+            if ( productModel.weight != 0)
+                binding.itemCalculateWeight.setText(productModel.weight.toString())
+            else binding.itemCalculateWeight.setText("")
+            binding.itemCalculateWeight.addTextChangedListener(textWatcher)
             binding.itemCalculateDeleteButton.setOnClickListener {
                 onItemListener.onClickDelete(productModel)
             }
@@ -42,7 +59,7 @@ class CalculeteAdapter(
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.bind(productList[position], onItemListener, position)
+        holder.bind(productList[position], onItemListener)
     }
 
     override fun getItemCount(): Int = productList.size
@@ -51,4 +68,8 @@ class CalculeteAdapter(
         productList = list
         notifyDataSetChanged()
     }
+
+    override fun getItemId(position: Int): Long = position.toLong()
+
+    override fun getItemViewType(position: Int): Int = position
 }

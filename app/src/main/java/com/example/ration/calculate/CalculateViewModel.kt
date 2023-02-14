@@ -32,10 +32,12 @@ class CalculateViewModel(private val repository: CalculateRepository) : ViewMode
     val listAllProduct = MutableLiveData<MutableList<ProductModel>>()
     var listAllDialogProduct = mutableListOf<DialogProductModel>()
 
-
-    fun resetListProduct(){
-        val list = listChoosedProduct.value
-        listChoosedProduct.value = list ?: emptyList<ProductModel>().toMutableList()
+    fun onChangeWeight(name: String, weight: Int) {
+        listChoosedProduct.value?.forEach {
+            if (name == it.name) {
+                it.weight = weight
+            }
+        }
     }
 
     fun calculatingCPFC() {
@@ -43,7 +45,6 @@ class CalculateViewModel(private val repository: CalculateRepository) : ViewMode
         protein.value = 0.0
         fat.value = 0.0
         carbohydrate.value = 0.0
-        listChoosedProduct.value?.distinct()
         listChoosedProduct.value?.forEach {
             calories.value = it.calories * it.weight / 100 + calories.value!!
             protein.value = it.protein * it.weight / 100 + protein.value!!
@@ -86,7 +87,6 @@ class CalculateViewModel(private val repository: CalculateRepository) : ViewMode
         viewModelScope.launch {
             val list = listChoosedProduct.value
             val product = repository.getProductByName(name)
-            product.weight = 0
             if (list?.contains(product) == false) {
                 list.add(product)
             }
@@ -95,11 +95,9 @@ class CalculateViewModel(private val repository: CalculateRepository) : ViewMode
     }
 
     fun removeProductFromCurrentList(productModel: ProductModel) {
-        viewModelScope.launch {
-            val list = listChoosedProduct.value
-            list?.remove(productModel)
-            listChoosedProduct.value = list ?: mutableListOf()
-        }
+        val list = listChoosedProduct.value
+        list?.remove(productModel)
+        listChoosedProduct.value = list ?: mutableListOf()
     }
 
     fun addNewProductToDB(productModel: ProductModel) {

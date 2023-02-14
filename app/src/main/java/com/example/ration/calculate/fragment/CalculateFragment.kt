@@ -49,11 +49,7 @@ class CalculateFragment : Fragment() {
         if (adapter == null) {
             adapter = CalculeteAdapter(object : OnItemListener {
                 override fun onChangeWeight(name: String, weight: Int) {
-                    calculateVM.listChoosedProduct.value?.forEach {
-                        if (name == it.name) {
-                            it.weight = weight
-                        }
-                    }
+                    calculateVM.onChangeWeight(name, weight)
                     calculateVM.calculatingCPFC()
                 }
 
