@@ -37,6 +37,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/enter_weight"
         android:inputType="number"
+        android:maxLength="@integer/max_length_input_data_of_human"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/female_check" />
@@ -47,6 +48,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/enter_height"
         android:inputType="number"
+        android:maxLength="@integer/max_length_input_data_of_human"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/human_weight_text_view"
         app:layout_constraintTop_toBottomOf="@+id/human_weight_text_view" />
@@ -57,6 +59,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/enter_age"
         android:inputType="number"
+        android:maxLength="@integer/max_length_input_data_of_human"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/human_height_text_view"
         app:layout_constraintTop_toBottomOf="@+id/human_height_text_view" />

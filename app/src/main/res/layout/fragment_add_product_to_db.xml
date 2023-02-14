@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/enter_name"
         android:inputType="text"
+        android:maxLength="@integer/max_length_input"
         android:textAlignment="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rules" />
@@ -21,6 +22,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/enter_calories"
         android:inputType="number"
+        android:maxLength="@integer/max_length_input"
         android:textAlignment="center"
         app:layout_constraintStart_toStartOf="@+id/name_edit_text_view"
         app:layout_constraintTop_toBottomOf="@+id/name_edit_text_view" />
@@ -31,6 +33,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/enter_fat"
         android:inputType="number"
+        android:maxLength="@integer/max_length_input"
         android:textAlignment="center"
         app:layout_constraintStart_toStartOf="@+id/calories_edit_text_view"
         app:layout_constraintTop_toBottomOf="@+id/calories_edit_text_view" />
@@ -41,6 +44,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/enter_protein"
         android:inputType="number"
+        android:maxLength="@integer/max_length_input"
         android:textAlignment="center"
         app:layout_constraintStart_toStartOf="@+id/fat_edit_text_view"
         app:layout_constraintTop_toBottomOf="@+id/fat_edit_text_view" />
@@ -51,6 +55,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/enter_carbohydrate"
         android:inputType="number"
+        android:maxLength="@integer/max_length_input"
         android:textAlignment="center"
         app:layout_constraintStart_toStartOf="@+id/protein_edit_text_view"
         app:layout_constraintTop_toBottomOf="@+id/protein_edit_text_view" />

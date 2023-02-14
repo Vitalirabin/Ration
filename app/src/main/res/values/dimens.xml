@@ -12,4 +12,7 @@
     <dimen name="button_width">96dp</dimen>
     <dimen name="button_text_size">11sp</dimen>
 
+    <integer name="max_length_input">9</integer>
+    <integer name="max_length_input_data_of_human">3</integer>
+
 </resources>
