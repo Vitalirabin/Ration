@@ -6,7 +6,7 @@ import com.example.ration.data_base.ProductDataBase
 
 class CalculateRepository(private val productDB: ProductDataBase) {
     suspend fun getProductByName(name: String): ProductModel {
-        return productDB.productDAO.getByName(name) ?: ProductModel("", 0.0, 0.0, 0.0, 0.0, "",0.0)
+        return productDB.productDAO.getByName(name) ?: ProductModel("", 0.0, 0.0, 0.0, 0.0, "", 0)
     }
 
     suspend fun getAllProducts(): List<ProductModel> {
@@ -14,8 +14,7 @@ class CalculateRepository(private val productDB: ProductDataBase) {
     }
 
     suspend fun addProductToDB(productModel: ProductModel) {
-        if (getProductByName(productModel.name).name == "") {
-            productDB.productDAO.addData(productModel)
-        }
+        productDB.productDAO.deleteProduct(productModel.name)
+        productDB.productDAO.addData(productModel)
     }
 }

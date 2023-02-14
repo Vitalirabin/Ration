@@ -26,7 +26,7 @@
     <fragment
         android:id="@+id/rationFragment"
         android:name="com.example.ration.ration.fragment.RationFragment"
-        android:label="@string/create_ration">
+        android:label="@string/your_ration">
         <action
             android:id="@+id/action_rationFragment_to_changeProductDialogFragment"
             app:destination="@id/changeProductDialogFragment" />
@@ -78,7 +78,7 @@
     <fragment
         android:id="@+id/enterDataOfHumanFragment"
         android:name="com.example.ration.ration.fragment.EnterDataOfHumanFragment"
-        android:label="EnterDataOfHumanFragment">
+        android:label="@string/enter_data_of_human">
         <action
             android:id="@+id/action_enterDataOfHumanFragment_to_rulesDialog"
             app:destination="@id/rulesDialog" />

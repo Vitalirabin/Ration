@@ -32,6 +32,12 @@ class CalculateViewModel(private val repository: CalculateRepository) : ViewMode
     val listAllProduct = MutableLiveData<MutableList<ProductModel>>()
     var listAllDialogProduct = mutableListOf<DialogProductModel>()
 
+
+    fun resetListProduct(){
+        val list = listChoosedProduct.value
+        listChoosedProduct.value = list ?: emptyList<ProductModel>().toMutableList()
+    }
+
     fun calculatingCPFC() {
         calories.value = 0.0
         protein.value = 0.0
@@ -47,14 +53,18 @@ class CalculateViewModel(private val repository: CalculateRepository) : ViewMode
     }
 
     fun getAllProducts() {
+        fat.value = 0.0
+        carbohydrate.value = 0.0
+        calories.value = 0.0
+        protein.value = 0.0
         viewModelScope.launch {
             val list = repository.getAllProducts().toMutableList()
-            listAllProduct.value = list
+            listAllProduct.value = repository.getAllProducts().toMutableList()
             list.forEach {
                 val element = DialogProductModel(
                     it.name,
                     String.format(
-                        "%skKal Белки:%sг Жири:%sг Углеводы:%sг",
+                        "%sкKal Белки:%sг Жири:%sг Углеводы:%sг",
                         it.calories,
                         it.protein,
                         it.fat,
@@ -76,7 +86,7 @@ class CalculateViewModel(private val repository: CalculateRepository) : ViewMode
         viewModelScope.launch {
             val list = listChoosedProduct.value
             val product = repository.getProductByName(name)
-            product.weight = 0.0
+            product.weight = 0
             if (list?.contains(product) == false) {
                 list.add(product)
             }
@@ -125,7 +135,7 @@ class CalculateViewModel(private val repository: CalculateRepository) : ViewMode
                             userCursor.getColumnIndex(
                                 COLUMN_CARBOHYDRATE
                             ) ?: 0
-                        ).toDouble(), table, 0.0
+                        ).toDouble(), table, 0
                     )
                 repository.addProductToDB(productModel)
             }

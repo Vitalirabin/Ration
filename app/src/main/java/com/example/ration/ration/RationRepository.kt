@@ -14,7 +14,7 @@ class RationRepository(
     }
 
     suspend fun getProductByName(name: String): ProductModel {
-        return productDB.productDAO.getByName(name) ?: ProductModel("", 0.0, 0.0, 0.0, 0.0, "", 0.0)
+        return productDB.productDAO.getByName(name) ?: ProductModel("", 0.0, 0.0, 0.0, 0.0, "", 0)
     }
 
     suspend fun getRation(): List<DayRationForBDModel> {

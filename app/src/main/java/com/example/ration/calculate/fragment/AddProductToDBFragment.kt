@@ -66,7 +66,7 @@ class AddProductToDBFragment : Fragment() {
                     binding.caloriesEditTextView.text.toString().toDouble(),
                     binding.proteinEditTextView.text.toString().toDouble(),
                     binding.fatEditTextView.text.toString().toDouble(),
-                    binding.carbohydrateEditTextView.text.toString().toDouble(), table, 0.0
+                    binding.carbohydrateEditTextView.text.toString().toDouble(), table, 0
                 )
             )
             Toast.makeText(context, R.string.added_product, Toast.LENGTH_SHORT).show()

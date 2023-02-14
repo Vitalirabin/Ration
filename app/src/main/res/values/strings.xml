@@ -64,5 +64,7 @@
     <string name="delete_product_text">Вы действительно хотите удалить </string>
     <string name="yes">Да </string>
     <string name="no">Нет</string>
+    <string name="accessibly">Понятно</string>
+    <string name="your_ration">Ваш рацион на неделю</string>
 
 </resources>

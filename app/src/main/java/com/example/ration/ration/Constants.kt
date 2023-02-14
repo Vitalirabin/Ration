@@ -24,8 +24,8 @@ object Constants {
     const val WEIGHT_UP = 110
 
     // салата и напитка в граммах
-    const val DRINKS_WEIGHT = 200.0
-    const val SALAD_WEIGHT = 100.0
+    const val DRINKS_WEIGHT = 200
+    const val SALAD_WEIGHT = 100
 
     // соотношение завтрак к общему числу калрий в %
     const val BREAKFAST_PART = 25

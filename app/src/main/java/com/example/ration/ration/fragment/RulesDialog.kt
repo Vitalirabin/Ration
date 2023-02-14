@@ -16,7 +16,7 @@ class RulesDialog : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = activity?.let { actvt ->
             val builder = MaterialAlertDialogBuilder(actvt)
-            builder.setPositiveButton(R.string.yes) { _, _ ->
+            builder.setPositiveButton(R.string.accessibly) { _, _ ->
             }
             builder.setMessage(String.format("%s", message))
             builder.create()

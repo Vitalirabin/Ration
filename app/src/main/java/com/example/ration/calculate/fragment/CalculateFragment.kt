@@ -21,7 +21,7 @@ class CalculateFragment : Fragment() {
 
     private var _binding: FragmentCalculateBinding? = null
     private val binding get() = _binding!!
-    private val calculateVM: CalculateViewModel by sharedViewModel<CalculateViewModel>()
+    private val calculateVM: CalculateViewModel by sharedViewModel()
     private var adapter: CalculeteAdapter? = null
 
     override fun onCreateView(
@@ -31,12 +31,14 @@ class CalculateFragment : Fragment() {
     ): View {
         _binding = FragmentCalculateBinding.inflate(inflater, container, false)
         calculateVM.addDefaultProductsToDB(requireContext())
+        calculateVM.listAllDialogProduct.clear()
         calculateVM.getAllProducts()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        calculateVM.getAllProducts()
         binding.addProductButton.setOnClickListener {
             calculateVM.getAllProducts()
             calculateVM.listAllProduct.value?.sortBy { it.name }
@@ -46,8 +48,12 @@ class CalculateFragment : Fragment() {
         }
         if (adapter == null) {
             adapter = CalculeteAdapter(object : OnItemListener {
-                override fun onChangeWeight(position: Int, weight: Double) {
-                    calculateVM.listChoosedProduct.value?.get(position)?.weight = weight
+                override fun onChangeWeight(name: String, weight: Int) {
+                    calculateVM.listChoosedProduct.value?.forEach {
+                        if (name == it.name) {
+                            it.weight = weight
+                        }
+                    }
                     calculateVM.calculatingCPFC()
                 }
 
@@ -55,12 +61,10 @@ class CalculateFragment : Fragment() {
                     calculateVM.removeProductFromCurrentList(productModel)
                     calculateVM.calculatingCPFC()
                 }
-
             })
         }
         calculateVM.listChoosedProduct.observe(viewLifecycleOwner) {
             adapter?.setData(it.toList())
-            adapter?.notifyDataSetChanged()
             calculateVM.calculatingCPFC()
         }
 

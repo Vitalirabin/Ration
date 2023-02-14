@@ -19,14 +19,15 @@ class CalculeteAdapter(
             productModel: ProductModel, onItemListener: OnItemListener, position: Int
         ) {
             binding.itemCalculateTitleTextView.text = productModel.name
+            if (productModel.weight != 0)
+                binding.itemCalculateWeight.setText(productModel.weight.toString())
+            else binding.itemCalculateWeight.setText("")
             binding.itemCalculateWeight.addTextChangedListener {
-                var weight = 0.0
                 if (binding.itemCalculateWeight.text.toString() != "") {
-                    weight = binding.itemCalculateWeight.text.toString().toDouble()
+                    onItemListener.onChangeWeight(
+                        productModel.name, it.toString().toInt()
+                    )
                 }
-                onItemListener.onChangeWeight(
-                    position, weight
-                )
             }
             binding.itemCalculateDeleteButton.setOnClickListener {
                 onItemListener.onClickDelete(productModel)

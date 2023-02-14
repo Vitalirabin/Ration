@@ -12,5 +12,5 @@ data class ProductModel(
     val fat: Double,
     val carbohydrate: Double,
     val product_сategory: String,
-    var weight: Double
+    var weight: Int
 )

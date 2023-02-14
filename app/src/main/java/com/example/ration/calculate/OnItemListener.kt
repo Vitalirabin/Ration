@@ -3,6 +3,6 @@ package com.example.ration.calculate
 import com.example.ration.ProductModel
 
 interface OnItemListener {
-    fun onChangeWeight(position:Int, weight: Double)
+    fun onChangeWeight(name:String, weight: Int)
     fun onClickDelete(productModel: ProductModel)
 }

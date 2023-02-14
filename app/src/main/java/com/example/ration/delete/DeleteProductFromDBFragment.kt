@@ -51,7 +51,7 @@ class DeleteProductFromDBFragment : Fragment() {
                 DialogProductModel(
                     it.name,
                     String.format(
-                        "%skKal Белки:%sг Жири:%sг Углеводы:%sг",
+                        "%sкKal Белки:%sг Жири:%sг Углеводы:%sг",
                         it.calories,
                         it.protein,
                         it.fat,

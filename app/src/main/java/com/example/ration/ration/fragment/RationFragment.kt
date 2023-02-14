@@ -53,7 +53,8 @@ class RationFragment : Fragment() {
             val action = RationFragmentDirections.actionRationFragmentToEnterDataOfHumanFragment()
             Navigation.findNavController(view).navigate(action)
         }
-        rationViewModel.setRationLastList()
+        if (rationViewModel.rationList.value?.isEmpty() == true || rationViewModel.rationList.value == null)
+            rationViewModel.setRationLastList()
         setRecyclerView()
     }
 
