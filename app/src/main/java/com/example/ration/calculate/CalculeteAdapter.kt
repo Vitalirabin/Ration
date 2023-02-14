@@ -34,17 +34,20 @@ class CalculeteAdapter(
                 }
 
                 override fun afterTextChanged(s: Editable?) {
-                    if (s.toString() != "") {
+                    if (s.toString() != "" && binding.itemCalculateTitleTextView.text == productModel.name) {
                         onItemListener.onChangeWeight(
                             productModel.name, s.toString().toInt()
                         )
-                    }
+                    } else if (binding.itemCalculateTitleTextView.text == productModel.name)
+                        onItemListener.onChangeWeight(
+                            productModel.name, 0
+                        )
                 }
             }
             binding.itemCalculateTitleTextView.text = productModel.name
-            if ( productModel.weight != 0)
-                binding.itemCalculateWeight.setText(productModel.weight.toString())
-            else binding.itemCalculateWeight.setText("")
+            binding.itemCalculateWeight.setText(productModel.weight.toString())
+            if (binding.itemCalculateWeight.text.toString() == "0")
+                binding.itemCalculateWeight.setText("")
             binding.itemCalculateWeight.addTextChangedListener(textWatcher)
             binding.itemCalculateDeleteButton.setOnClickListener {
                 onItemListener.onClickDelete(productModel)

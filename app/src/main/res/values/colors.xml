@@ -10,4 +10,5 @@
 
     <color name="item_stroke">#80000000</color>
     <color name="invisible">#00000000</color>
+    <color name="backItem">#9EFFFEFE</color>
 </resources>

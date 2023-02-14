@@ -87,7 +87,8 @@ class CalculateViewModel(private val repository: CalculateRepository) : ViewMode
         viewModelScope.launch {
             val list = listChoosedProduct.value
             val product = repository.getProductByName(name)
-            if (list?.contains(product) == false) {
+            val listName = list?.map { it.name }
+            if (listName?.contains(name) == false) {
                 list.add(product)
             }
             listChoosedProduct.value = list ?: mutableListOf()
