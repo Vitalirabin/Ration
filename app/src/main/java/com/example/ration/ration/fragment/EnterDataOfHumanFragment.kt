@@ -4,21 +4,13 @@ package com.example.ration.ration.fragment
 import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import androidx.navigation.Navigation
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.ration.R
-import com.example.ration.calculate.ChoseProductAdapter
-import com.example.ration.calculate.DialogProductModel
-import com.example.ration.calculate.OnDialogItemClick
 import com.example.ration.databinding.FragmentDataOfHealthBinding
 import com.example.ration.ration.Constants
 import com.example.ration.ration.RationViewModel
@@ -170,29 +162,24 @@ class EnterDataOfHumanFragment : DialogFragment() {
 
     private fun seeRules(view: View, Button: ImageButton) {
         Button.setOnClickListener {
-            var message = ""
             when (Button) {
                 binding.lowActivityRulesImageButton -> {
-                    message = getString(R.string.activity_low_rules)
+                    rationVM.message = getString(R.string.activity_low_rules)
                 }
                 binding.lightActivityRulesImageButton -> {
-                    message = getString(R.string.activity_light_rules)
+                    rationVM.message = getString(R.string.activity_light_rules)
                 }
                 binding.averageActivityRulesImageButton -> {
-                    message = getString(R.string.activity_average_rules)
+                    rationVM.message = getString(R.string.activity_average_rules)
                 }
                 binding.highActivityRulesImageButton -> {
-                    message = getString(R.string.activity_high_rules)
+                    rationVM.message = getString(R.string.activity_high_rules)
                 }
                 binding.veryHighActivityRulesImageButton -> {
-                    message = getString(R.string.activity_very_high_rules)
+                    rationVM.message = getString(R.string.activity_very_high_rules)
                 }
             }
-            val action =
-                EnterDataOfHumanFragmentDirections.actionEnterDataOfHumanFragmentToRulesDialog(
-                    message
-                )
-            Navigation.findNavController(view).navigate(action)
+            RulesDialog().show(requireFragmentManager(), "rules")
         }
     }
 }

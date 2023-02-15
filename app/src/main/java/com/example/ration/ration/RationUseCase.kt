@@ -79,18 +79,24 @@ class RationUseCase(private val repository: RationRepository) {
         val ration = mutableListOf<DayRationModel>()
         for (i in 1..7) {
             val breakfast = BreakfastModel(
-                breakfasts[randList(breakfasts.size)],
-                drinks[randList(drinks.size)], 0
+                if (breakfasts.size != 0) breakfasts[randList(breakfasts.size)]
+                else ProductModel("", 0.0, 0.0, 0.0, 0.0, "", 0),
+                if (drinks.size != 0) drinks[randList(drinks.size)]
+                else ProductModel("", 0.0, 0.0, 0.0, 0.0, "", 0), 0
             )
             breakfast.calories = caloriesOnDay * Constants.BREAKFAST_PART / 100
             breakfast.drink.weight = Constants.DRINKS_WEIGHT
             breakfast.product.weight =
                 ((caloriesOnDay * Constants.BREAKFAST_PART / 100 - breakfast.drink.weight * breakfast.drink.calories / 100) / (breakfast.product.calories / 100)).toInt()
             val lunch = LunchModel(
-                seconds[randList(seconds.size)],
-                hotters[randList(hotters.size)],
-                salads[randList(salads.size)],
-                drinks[randList(drinks.size)], 0
+                if (seconds.size != 0) seconds[randList(seconds.size)]
+                else ProductModel("", 0.0, 0.0, 0.0, 0.0, "", 0),
+                if (hotters.size != 0) hotters[randList(hotters.size)]
+                else ProductModel("", 0.0, 0.0, 0.0, 0.0, "", 0),
+                if (salads.size != 0) salads[randList(salads.size)]
+                else ProductModel("", 0.0, 0.0, 0.0, 0.0, "", 0),
+                if (drinks.size != 0) drinks[randList(drinks.size)]
+                else ProductModel("", 0.0, 0.0, 0.0, 0.0, "", 0), 0
             )
             lunch.calories = caloriesOnDay * Constants.LUNCH_PART / 100
             lunch.drink.weight = Constants.DRINKS_WEIGHT
@@ -100,9 +106,12 @@ class RationUseCase(private val repository: RationRepository) {
             lunch.second.weight =
                 ((caloriesOnDay * Constants.LUNCH_PART / 100 - lunch.salad.weight * lunch.salad.calories / 100 - lunch.drink.weight * lunch.drink.calories / 100) * 0.7 / (lunch.second.calories / 100)).toInt()
             val dinner = DinnerModel(
-                seconds[randList(seconds.size)],
-                salads[randList(salads.size)],
-                drinks[randList(drinks.size)], 0
+                if (seconds.size != 0) seconds[randList(seconds.size)]
+                else ProductModel("", 0.0, 0.0, 0.0, 0.0, "", 0),
+                if (salads.size != 0) salads[randList(salads.size)]
+                else ProductModel("", 0.0, 0.0, 0.0, 0.0, "", 0),
+                if (drinks.size != 0) drinks[randList(drinks.size)]
+                else ProductModel("", 0.0, 0.0, 0.0, 0.0, "", 0), 0
             )
             dinner.calories = caloriesOnDay * Constants.DINNER_PART / 100
             dinner.drink.weight = Constants.DRINKS_WEIGHT

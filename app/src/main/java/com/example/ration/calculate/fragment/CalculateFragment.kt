@@ -46,7 +46,6 @@ class CalculateFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        calculateVM.getAllProducts()
         binding.addProductButton.setOnClickListener {
             calculateVM.getAllProducts()
             calculateVM.listAllProduct.value?.sortBy { it.name }

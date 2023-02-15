@@ -21,6 +21,7 @@ class RationViewModel(private val useCase: RationUseCase) : ViewModel() {
     val male = MutableLiveData<Boolean>()
     val isVisible = MutableLiveData<Boolean>()
     private var savedRation: List<DayRationForBDModel>? = listOf<DayRationForBDModel>()
+    var message = ""
 
     fun setProducts() {
         viewModelScope.launch {
@@ -107,7 +108,7 @@ class RationViewModel(private val useCase: RationUseCase) : ViewModel() {
         calories: Int
     ) {
         viewModelScope.launch {
-            isVisible.value=false
+            isVisible.value = false
             rationList.value?.forEachIndexed { index, dayRationModel ->
                 if (position == index) {
                     when (timeToEat) {
@@ -193,7 +194,7 @@ class RationViewModel(private val useCase: RationUseCase) : ViewModel() {
             }
             val list = rationList.value
             rationList.value = list ?: mutableListOf()
-            isVisible.value=true
+            isVisible.value = true
         }
     }
 

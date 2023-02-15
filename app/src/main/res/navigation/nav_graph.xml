@@ -67,20 +67,8 @@
             android:name="name"
             app:argType="string" />
     </dialog>
-    <dialog
-        android:id="@+id/rulesDialog"
-        android:name="com.example.ration.ration.fragment.RulesDialog"
-        android:label="RulesDialog">
-        <argument
-            android:name="message"
-            app:argType="string" />
-    </dialog>
     <fragment
         android:id="@+id/enterDataOfHumanFragment"
         android:name="com.example.ration.ration.fragment.EnterDataOfHumanFragment"
-        android:label="@string/enter_data_of_human">
-        <action
-            android:id="@+id/action_enterDataOfHumanFragment_to_rulesDialog"
-            app:destination="@id/rulesDialog" />
-    </fragment>
+        android:label="@string/enter_data_of_human"/>
 </navigation>
