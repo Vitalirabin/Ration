@@ -22,12 +22,8 @@ class RationRepository(
     }
 
     suspend fun setRation(rationModel: DayRationForBDModel) {
-        if (rationDB.rationDAO.getRationByDay(rationModel.day)?.breakfastProductName != "" || rationDB.rationDAO.getRationByDay(
-                rationModel.day
-            )?.breakfastProductName == null || rationDB.rationDAO.getAllRation()?.isEmpty() == true
-        ) {
-            rationDB.rationDAO.deleteRation(rationModel.day)
-            rationDB.rationDAO.addRationData(rationModel)
-        }
+        rationDB.rationDAO.deleteRation(rationModel.day)
+        rationDB.rationDAO.addRationData(rationModel)
+
     }
 }

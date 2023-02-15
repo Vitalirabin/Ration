@@ -40,6 +40,16 @@ class CalculateViewModel(private val repository: CalculateRepository) : ViewMode
         }
     }
 
+    fun onDeleteProduct() {
+        val list = listChoosedProduct.value
+        listAllProduct.value?.forEach {
+            if (list?.contains(it) != false) {
+                list?.remove(it)
+            }
+        }
+        listChoosedProduct.value = list ?: emptyList<ProductModel>().toMutableList()
+    }
+
     fun calculatingCPFC() {
         calories.value = 0.0
         protein.value = 0.0

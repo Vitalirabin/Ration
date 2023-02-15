@@ -1,41 +1,44 @@
 package com.example.ration.ration.fragment
 
 
-import android.content.Context
-import android.content.SharedPreferences
+import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Toast
-import androidx.fragment.app.Fragment
+import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.DialogFragment
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.ration.R
+import com.example.ration.calculate.ChoseProductAdapter
+import com.example.ration.calculate.DialogProductModel
+import com.example.ration.calculate.OnDialogItemClick
 import com.example.ration.databinding.FragmentDataOfHealthBinding
 import com.example.ration.ration.Constants
 import com.example.ration.ration.RationViewModel
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
-class EnterDataOfHumanFragment : Fragment() {
+class EnterDataOfHumanFragment : DialogFragment() {
 
     private val rationVM by sharedViewModel<RationViewModel>()
     private lateinit var binding: FragmentDataOfHealthBinding
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentDataOfHealthBinding.inflate(layoutInflater)
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        val dialog = activity?.let { actvt ->
+            val builder = AlertDialog.Builder(actvt)
+            binding = FragmentDataOfHealthBinding.inflate(layoutInflater)
+            builder.setView(binding.root)
+            builder.setTitle(R.string.enter_data_of_human)
+            builder.create()
+        }
         binding.endEnterButton.setOnClickListener {
             if (onClickEndButton())
-                Navigation.findNavController(view).popBackStack()
+                dialog?.dismiss()
         }
         setSexRules()
         setWeightRules()
@@ -45,6 +48,7 @@ class EnterDataOfHumanFragment : Fragment() {
         seeRules(binding.root, binding.averageActivityRulesImageButton)
         seeRules(binding.root, binding.highActivityRulesImageButton)
         seeRules(binding.root, binding.veryHighActivityRulesImageButton)
+        return dialog ?: throw IllegalStateException("Activity cannot be null")
     }
 
     private fun onClickEndButton(): Boolean {

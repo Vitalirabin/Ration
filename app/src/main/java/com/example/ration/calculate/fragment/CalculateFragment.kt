@@ -69,9 +69,10 @@ class CalculateFragment : Fragment() {
         }
         calculateVM.listChoosedProduct.observe(viewLifecycleOwner) {
             adapter?.setData(it.toList())
+            adapter?.notifyDataSetChanged()
             calculateVM.calculatingCPFC()
         }
-
+        calculateVM.onDeleteProduct()
         calculateVM.calories.observe(viewLifecycleOwner) {
             binding.calculateCaloriesTextView.text =
                 String.format("%s %.0f", getString(R.string.calories), it.toFloat())

@@ -42,16 +42,14 @@ class RationFragment : Fragment() {
         }
         binding.makeNewDietButton.setOnClickListener {
             rationViewModel.createNewRation.value = true
-            val action = RationFragmentDirections.actionRationFragmentToEnterDataOfHumanFragment()
-            Navigation.findNavController(view).navigate(action)
+            EnterDataOfHumanFragment().show(requireFragmentManager(), "EnterDataOfHumanFragment")
         }
         rationViewModel.calloriesOnDay.value =
             context?.getSharedPreferences(Constants.NAME_SP, Context.MODE_PRIVATE)
                 ?.getInt("lastCalories", 0)
         if (rationViewModel.calloriesOnDay.value == 0) {
             rationViewModel.createNewRation.value = true
-            val action = RationFragmentDirections.actionRationFragmentToEnterDataOfHumanFragment()
-            Navigation.findNavController(view).navigate(action)
+            EnterDataOfHumanFragment().show(requireFragmentManager(), "EnterDataOfHumanFragment")
         }
         if (rationViewModel.rationList.value?.isEmpty() == true || rationViewModel.rationList.value == null)
             rationViewModel.setRationLastList()

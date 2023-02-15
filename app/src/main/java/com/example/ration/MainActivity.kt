@@ -25,7 +25,6 @@ class MainActivity : AppCompatActivity() {
                 R.id.fragmentDeleteProductFromDB,
                 R.id.rationFragment,
                 R.id.calculateFragment,
-                R.id.enterDataOfHumanFragment
             ),
             drawerLayout = findViewById<DrawerLayout>(R.id.drawer_layout),
         )

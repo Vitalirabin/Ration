@@ -121,10 +121,11 @@
 
     <com.google.android.material.checkbox.MaterialCheckBox
         android:id="@+id/very_high_activity_check"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="@dimen/checkbox_activity_height"
         android:text="@string/activity_very_high"
-        app:layout_constraintStart_toStartOf="@+id/high_activity_check"
+        app:layout_constraintEnd_toEndOf="@+id/average_activity_check"
+        app:layout_constraintStart_toStartOf="@+id/average_activity_check"
         app:layout_constraintTop_toBottomOf="@+id/high_activity_check" />
 
     <com.google.android.material.textview.MaterialTextView
