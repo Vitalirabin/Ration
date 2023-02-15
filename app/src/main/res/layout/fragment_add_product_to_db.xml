@@ -11,7 +11,6 @@
         android:layout_height="wrap_content"
         android:hint="@string/enter_name"
         android:inputType="text"
-        android:maxLength="@integer/max_length_input"
         android:textAlignment="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rules" />

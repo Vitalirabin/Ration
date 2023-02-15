@@ -16,7 +16,7 @@ import com.example.ration.calculate.OnDialogItemClick
 import com.example.ration.databinding.DialogChooseProductBinding
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
-class DeleteProductFromDBFragment : Fragment() {
+class DeleteProductFromDBFragment : Fragment(), OnDialogItemClick {
 
     private lateinit var binding: DialogChooseProductBinding
     private var adapter: DeleteProductAdapter? = null
@@ -34,13 +34,7 @@ class DeleteProductFromDBFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         if (adapter == null) {
-            adapter = DeleteProductAdapter(object : OnDialogItemClick {
-                override fun onClick(name: String) {
-                    val action =
-                        DeleteProductFromDBFragmentDirections.actionFragmentDeleteProductFromDBToChooseDialog(name)
-                    Navigation.findNavController(view).navigate(action)
-                }
-            })
+            adapter = DeleteProductAdapter(this)
         }
         binding.listChooseProductItem.adapter = adapter
         binding.listChooseProductItem.layoutManager = LinearLayoutManager(context).apply {
@@ -60,6 +54,7 @@ class DeleteProductFromDBFragment : Fragment() {
                 )
             })
         }
+        android.os.Handler().postDelayed({ binding.searchEditText.setText("") }, 200)
         deleteViewModel.getAllProduct()
         binding.searchEditText.addTextChangedListener(filterTextWatcher)
     }
@@ -78,5 +73,10 @@ class DeleteProductFromDBFragment : Fragment() {
         ) {
             adapter?.filter?.filter(s)
         }
+    }
+
+    override fun onClick(name: String) {
+        deleteViewModel.setDeleteName(name)
+        ChooseDialog().show(requireFragmentManager(), "chooseDialog")
     }
 }

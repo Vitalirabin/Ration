@@ -1,25 +1,27 @@
 package com.example.ration.delete
 
 import android.app.Dialog
+import android.content.Context
 import android.os.Bundle
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.navigation.fragment.navArgs
 import com.example.ration.R
+import com.example.ration.ration.Constants
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class ChooseDialog : DialogFragment() {
 
     private val deleteViewModel by sharedViewModel<DeleteViewModel>()
-    private val args by navArgs<ChooseDialogArgs>()
-    private val name by lazy { args.name }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = activity?.let { activity ->
             val builder = MaterialAlertDialogBuilder(activity)
             builder.setPositiveButton(R.string.yes) { _, _ ->
-                deleteViewModel.deleteProduct(name)
+                deleteViewModel.deleteProduct()
+                context?.getSharedPreferences(Constants.NAME_SP, Context.MODE_PRIVATE)?.edit()
+                    ?.putInt("lastCalories", 0)?.apply()
                 Toast.makeText(
                     context,
                     getString(R.string.deleted_product),
@@ -27,13 +29,13 @@ class ChooseDialog : DialogFragment() {
                 ).show()
             }
             builder.setNegativeButton(R.string.no) { _, _ ->
-                dialog?.cancel()
+                dialog?.dismiss()
             }
             builder.setMessage(
                 String.format(
                     "%s %s?",
                     getString(R.string.delete_product_text),
-                    name
+                    deleteViewModel.deletingProductName.value
                 )
             )
             builder.setTitle(R.string.delete)

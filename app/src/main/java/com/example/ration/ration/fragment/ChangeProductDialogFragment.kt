@@ -65,7 +65,7 @@ class ChangeProductDialogFragment : DialogFragment() {
             val searchView = mView.findViewById<EditText>(R.id.search_edit_text)
             searchView.addTextChangedListener(filterTextWatcher)
             builder.setView(mView)
-            builder.setTitle(R.string.choose_products)
+            builder.setTitle(R.string.choose_product)
             builder.create()
         }
         return dialog ?: throw IllegalStateException("Activity cannot be null")

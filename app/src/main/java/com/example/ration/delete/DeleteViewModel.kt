@@ -9,10 +9,16 @@ import kotlinx.coroutines.launch
 class DeleteViewModel(private val deleteRepository: DeleteRepository) : ViewModel() {
 
     val allProductInDB = MutableLiveData<List<ProductModel>>()
-    fun deleteProduct(name: String) {
+    val deletingProductName = MutableLiveData<String>()
+
+    fun setDeleteName(name: String) {
+        deletingProductName.value = name
+    }
+
+    fun deleteProduct() {
         viewModelScope.launch {
-            deleteRepository.deleteProduct(name)
-            allProductInDB.value=deleteRepository.getAllProduct()
+            deleteRepository.deleteProduct(deletingProductName.value ?: "")
+            allProductInDB.value = deleteRepository.getAllProduct()
         }
     }
 

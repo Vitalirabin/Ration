@@ -1,5 +1,6 @@
 package com.example.ration.calculate.fragment
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,7 @@ import com.example.ration.calculate.CalculateViewModel
 import com.example.ration.calculate.CalculeteAdapter
 import com.example.ration.calculate.OnItemListener
 import com.example.ration.databinding.FragmentCalculateBinding
+import com.example.ration.ration.Constants
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 
@@ -30,7 +32,13 @@ class CalculateFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentCalculateBinding.inflate(inflater, container, false)
-        calculateVM.addDefaultProductsToDB(requireContext())
+        if (context?.getSharedPreferences(Constants.NAME_SP, Context.MODE_PRIVATE)
+                ?.getBoolean("addedDefaultProduct", false) == false
+        ) {
+            calculateVM.addDefaultProductsToDB(requireContext())
+            context?.getSharedPreferences(Constants.NAME_SP, Context.MODE_PRIVATE)
+                ?.edit()?.putBoolean("addedDefaultProduct", true)?.apply()
+        }
         calculateVM.listAllDialogProduct.clear()
         calculateVM.getAllProducts()
         return binding.root
