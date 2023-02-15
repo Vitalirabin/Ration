@@ -63,16 +63,18 @@ class RationViewHolder(private val binding: ItemRationBinding) :
             }
         }
         ration.dinner.salad.name.apply {
-            if (this != "")
+            if (this != "") {
                 binding.dinnerSaladTitleTextView.text = this
-            binding.dinnerSaladSubtitleTextView.text =
-                String.format("%sг", ration.dinner.salad.weight.toString())
+                binding.dinnerSaladSubtitleTextView.text =
+                    String.format("%sг", ration.dinner.salad.weight.toString())
+            }
         }
         ration.dinner.drink.name.apply {
-            if (this != "")
+            if (this != "") {
                 binding.dinnerDrinkTitleTextView.text = this
-            binding.dinnerDrinkSubtitleTextView.text =
-                String.format("%sг", ration.dinner.drink.weight.toString())
+                binding.dinnerDrinkSubtitleTextView.text =
+                    String.format("%sг", ration.dinner.drink.weight.toString())
+            }
         }
         binding.breakfastCaloriesTextView.text =
             String.format("- %s кKal", ration.breakfast.calories.toString())

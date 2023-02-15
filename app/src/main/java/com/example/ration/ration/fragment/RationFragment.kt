@@ -40,9 +40,23 @@ class RationFragment : Fragment() {
         rationViewModel.rationList.observe(viewLifecycleOwner) {
             adapter?.setData(it)
         }
+        rationViewModel.productList.observe(viewLifecycleOwner) {
+            rationViewModel.setRationLastList()
+            adapter?.setData(rationViewModel.rationList.value ?: emptyList())
+        }
         binding.makeNewDietButton.setOnClickListener {
             rationViewModel.createNewRation.value = true
             EnterDataOfHumanFragment().show(requireFragmentManager(), "EnterDataOfHumanFragment")
+        }
+        rationViewModel.createNewRation.observe(viewLifecycleOwner) {
+            if (it == true)
+                binding.rationRecycleView.visibility = View.INVISIBLE
+            else binding.rationRecycleView.visibility = View.VISIBLE
+        }
+        rationViewModel.isVisible.observe(viewLifecycleOwner) {
+            if (it != true)
+                binding.rationRecycleView.visibility = View.INVISIBLE
+            else binding.rationRecycleView.visibility = View.VISIBLE
         }
         rationViewModel.calloriesOnDay.value =
             context?.getSharedPreferences(Constants.NAME_SP, Context.MODE_PRIVATE)
@@ -54,6 +68,7 @@ class RationFragment : Fragment() {
         if (rationViewModel.rationList.value?.isEmpty() == true || rationViewModel.rationList.value == null)
             rationViewModel.setRationLastList()
         setRecyclerView()
+        adapter?.notifyDataSetChanged()
     }
 
     override fun onDestroyView() {

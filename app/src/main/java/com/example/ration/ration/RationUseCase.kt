@@ -27,6 +27,7 @@ class RationUseCase(private val repository: RationRepository) {
                 getProductByName(it.breakfastProductName),
                 getProductByName(it.breakfastDrinkName), 0
             )
+            delay(50)
             breakfast.drink.weight = Constants.DRINKS_WEIGHT
             breakfast.product.weight =
                 ((caloriesOnDay * Constants.BREAKFAST_PART / 100 - breakfast.drink.weight * breakfast.drink.calories / 100) / (breakfast.product.calories / 100)).toInt()
@@ -38,6 +39,7 @@ class RationUseCase(private val repository: RationRepository) {
                 getProductByName(it.lunchDrinkName),
                 0
             )
+            delay(50)
             lunch.calories = caloriesOnDay * Constants.LUNCH_PART / 100
             lunch.drink.weight = Constants.DRINKS_WEIGHT
             lunch.salad.weight = Constants.SALAD_WEIGHT
@@ -50,6 +52,7 @@ class RationUseCase(private val repository: RationRepository) {
                 getProductByName(it.dinerSaladName),
                 getProductByName(it.dinerDrinkName), 0
             )
+            delay(50)
             dinner.calories = caloriesOnDay * Constants.DINNER_PART / 100
             dinner.drink.weight = Constants.DRINKS_WEIGHT
             dinner.salad.weight = Constants.SALAD_WEIGHT

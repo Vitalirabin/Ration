@@ -2,6 +2,7 @@ package com.example.ration.ration.fragment
 
 
 import android.app.Dialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -49,6 +50,12 @@ class EnterDataOfHumanFragment : DialogFragment() {
         seeRules(binding.root, binding.highActivityRulesImageButton)
         seeRules(binding.root, binding.veryHighActivityRulesImageButton)
         return dialog ?: throw IllegalStateException("Activity cannot be null")
+    }
+
+    override fun onDismiss(dialog: DialogInterface) {
+        super.onDismiss(dialog)
+        rationVM.isVisible.value = true
+        rationVM.createNewRation.value = false
     }
 
     private fun onClickEndButton(): Boolean {
