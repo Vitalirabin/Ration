@@ -12,31 +12,68 @@ class RationViewHolder(private val binding: ItemRationBinding) :
     ) {
         binding.itemNumberTextView.text =
             String.format("День %s", (ration.day).toString())
-        binding.breakfastProductTitleTextView.text = ration.breakfast.product.name
-        binding.breakfastProductSubtitleTextView.text =
-            String.format("%sг", ration.breakfast.product.weight.toString())
-        binding.breakfastDrinkTitleTextView.text = ration.breakfast.drink.name
-        binding.breakfastDrinkSubtitleTextView.text =
-            String.format("%sг", ration.breakfast.drink.weight.toString())
-        binding.lunchHotterTitleTextView.text = ration.lunch.hotter.name
-        binding.lunchHotterSubtitleTextView.text =
-            String.format("%sг", ration.lunch.hotter.weight.toString())
-        binding.lunchSecondTitleTextView.text = ration.lunch.second.name
-        binding.lunchSecondSubtitleTextView.text =
-            String.format("%sг", ration.lunch.second.weight.toString())
-        binding.lunchSaladTitleTextView.text = ration.lunch.salad.name
-        binding.lunchSaladSubtitleTextView.text = String.format("%sг", ration.lunch.salad.weight.toString())
-        binding.lunchDrinkTitleTextView.text = ration.lunch.drink.name
-        binding.lunchDrinkSubtitleTextView.text = String.format("%sг", ration.lunch.drink.weight.toString())
-        binding.dinnerSecondTitleTextView.text = ration.dinner.second.name
-        binding.dinnerSecondSubtitleTextView.text =
-            String.format("%sг", ration.dinner.second.weight.toString())
-        binding.dinnerSaladTitleTextView.text = ration.dinner.salad.name
-        binding.dinnerSaladSubtitleTextView.text =
-            String.format("%sг", ration.dinner.salad.weight.toString())
-        binding.dinnerDrinkTitleTextView.text = ration.dinner.drink.name
-        binding.dinnerDrinkSubtitleTextView.text =
-            String.format("%sг", ration.dinner.drink.weight.toString())
+        ration.breakfast.product.name.apply {
+            if (this != "") {
+                binding.breakfastProductTitleTextView.text = this
+                binding.breakfastProductSubtitleTextView.text =
+                    String.format("%sг", ration.breakfast.product.weight.toString())
+            }
+        }
+        ration.breakfast.drink.name.apply {
+            if (this != "") {
+                binding.breakfastDrinkTitleTextView.text = this
+                binding.breakfastDrinkSubtitleTextView.text =
+                    String.format("%sг", ration.breakfast.drink.weight.toString())
+            }
+        }
+        ration.lunch.hotter.name.apply {
+            if (this != "") {
+                binding.lunchHotterTitleTextView.text = this
+                binding.lunchHotterSubtitleTextView.text =
+                    String.format("%sг", ration.lunch.hotter.weight.toString())
+            }
+        }
+        ration.lunch.second.name.apply {
+            if (this != "") {
+                binding.lunchSecondTitleTextView.text = this
+                binding.lunchSecondSubtitleTextView.text =
+                    String.format("%sг", ration.lunch.second.weight.toString())
+            }
+        }
+        ration.lunch.salad.name.apply {
+            if (this != "") {
+                binding.lunchSaladTitleTextView.text = this
+                binding.lunchSaladSubtitleTextView.text =
+                    String.format("%sг", ration.lunch.salad.weight.toString())
+            }
+        }
+        ration.lunch.drink.name.apply {
+            if (this != "") {
+                binding.lunchDrinkTitleTextView.text = this
+                binding.lunchDrinkSubtitleTextView.text =
+                    String.format("%sг", ration.lunch.drink.weight.toString())
+            }
+        }
+
+        ration.dinner.second.name.apply {
+            if (this != "") {
+                binding.dinnerSecondTitleTextView.text = this
+                binding.dinnerSecondSubtitleTextView.text =
+                    String.format("%sг", ration.dinner.second.weight.toString())
+            }
+        }
+        ration.dinner.salad.name.apply {
+            if (this != "")
+                binding.dinnerSaladTitleTextView.text = this
+            binding.dinnerSaladSubtitleTextView.text =
+                String.format("%sг", ration.dinner.salad.weight.toString())
+        }
+        ration.dinner.drink.name.apply {
+            if (this != "")
+                binding.dinnerDrinkTitleTextView.text = this
+            binding.dinnerDrinkSubtitleTextView.text =
+                String.format("%sг", ration.dinner.drink.weight.toString())
+        }
         binding.breakfastCaloriesTextView.text =
             String.format("- %s кKal", ration.breakfast.calories.toString())
         binding.lunchCaloriesTextView.text =

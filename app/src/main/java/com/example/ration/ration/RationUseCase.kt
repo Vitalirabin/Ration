@@ -14,22 +14,9 @@ class RationUseCase(private val repository: RationRepository) {
         return repository.getProductByName(name)
     }
 
-    suspend fun saveRation(ration: List<DayRationModel>) {
+    suspend fun saveRation(ration: List<DayRationForBDModel>) {
         ration.forEach {
-            repository.setRation(
-                DayRationForBDModel(
-                    it.day,
-                    it.breakfast.product.name,
-                    it.breakfast.drink.name,
-                    it.lunch.hotter.name,
-                    it.lunch.second.name,
-                    it.lunch.salad.name,
-                    it.lunch.drink.name,
-                    it.dinner.second.name,
-                    it.dinner.salad.name,
-                    it.dinner.drink.name
-                )
-            )
+            repository.setRation(it)
         }
     }
 

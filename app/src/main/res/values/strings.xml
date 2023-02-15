@@ -68,4 +68,13 @@
     <string name="your_ration">Ваш рацион на неделю</string>
     <string name="choose_product">Выберите продукт:</string>
 
+    <string name="no_product_in_db">Этот продукт был удален из базы.</string>
+    <string name="change_product_in_weight">Замените продукт!</string>
+
+    <string name="add_breakfast_to_DB">Добавьте завтрак в базу данных!</string>
+    <string name="add_hotter_to_DB">Добавьте суп в базу данных!</string>
+    <string name="add_second_to_DB">Добавьте второе в базу данных!</string>
+    <string name="add_salad_to_DB">Добавьте салат в базу данных!</string>
+    <string name="add_drink_to_DB">Добавьте напиток в базу данных!</string>
+
 </resources>

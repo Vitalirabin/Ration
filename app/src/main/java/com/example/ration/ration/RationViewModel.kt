@@ -5,7 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.ration.ProductModel
+import com.example.ration.ration.models.DayRationForBDModel
 import com.example.ration.ration.models.DayRationModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class RationViewModel(private val useCase: RationUseCase) : ViewModel() {
@@ -17,6 +19,7 @@ class RationViewModel(private val useCase: RationUseCase) : ViewModel() {
     val activity = MutableLiveData<Int>()
     val purpose = MutableLiveData<Int>()
     val male = MutableLiveData<Boolean>()
+    private var savedRation: List<DayRationForBDModel>? = listOf<DayRationForBDModel>()
 
     fun setProducts() {
         viewModelScope.launch {
@@ -25,9 +28,22 @@ class RationViewModel(private val useCase: RationUseCase) : ViewModel() {
     }
 
     fun saveRation() {
+        savedRation = rationList.value?.map {
+            DayRationForBDModel(
+                it.day,
+                it.breakfast.product.name,
+                it.breakfast.drink.name,
+                it.lunch.hotter.name,
+                it.lunch.second.name,
+                it.lunch.salad.name,
+                it.lunch.drink.name,
+                it.dinner.second.name,
+                it.dinner.salad.name,
+                it.dinner.drink.name
+            )
+        }?.toList()
         viewModelScope.launch {
-            useCase.saveRation(rationList.value ?: emptyList())
-            rationList.value = emptyList<DayRationModel>().toMutableList()
+            useCase.saveRation(savedRation ?: emptyList())
         }
     }
 
@@ -70,9 +86,13 @@ class RationViewModel(private val useCase: RationUseCase) : ViewModel() {
 
     fun setRationLastList() {
         viewModelScope.launch {
-            rationList.value = useCase.getRation(calloriesOnDay.value ?: 0).toMutableList()
             if (useCase.getRation(calloriesOnDay.value ?: 0).isEmpty()) {
                 setRationList()
+            } else {
+                rationList.value = useCase.getRation(
+                    calloriesOnDay.value
+                        ?: 0
+                ).toMutableList()
             }
         }
     }
@@ -92,15 +112,20 @@ class RationViewModel(private val useCase: RationUseCase) : ViewModel() {
                             when (category) {
                                 Constants.BREAKFAST -> {
                                     val productModel = useCase.getProductByName(name)
-                                    productModel.weight =
-                                        (calories / (productModel.calories / 100)).toInt()
                                     dayRationModel.breakfast.product = productModel
+                                    dayRationModel.breakfast.product.weight =
+                                        ((dayRationModel.breakfast.calories - dayRationModel.breakfast.drink.weight * dayRationModel.breakfast.drink.calories / 100) / (dayRationModel.breakfast.product.calories / 100)).toInt()
                                 }
                                 Constants.CATEGORY_DRINKS -> {
                                     val productModel = useCase.getProductByName(name)
-                                    productModel.weight =
-                                        (calories / (productModel.calories / 100)).toInt()
+                                    if ((calories / (productModel.calories / 100)).toInt() != 0)
+                                        productModel.weight =
+                                            (calories / (productModel.calories / 100)).toInt()
+                                    else productModel.weight = 1
+                                    productModel.weight = Constants.DRINKS_WEIGHT
                                     dayRationModel.breakfast.drink = productModel
+                                    dayRationModel.breakfast.product.weight =
+                                        ((dayRationModel.breakfast.calories - dayRationModel.breakfast.drink.weight * dayRationModel.breakfast.drink.calories / 100) / (dayRationModel.breakfast.product.calories / 100)).toInt()
                                 }
                             }
 
@@ -110,25 +135,29 @@ class RationViewModel(private val useCase: RationUseCase) : ViewModel() {
                                 Constants.CATEGORY_SECOND -> {
                                     val productModel = useCase.getProductByName(name)
                                     productModel.weight =
-                                        (calories / (productModel.calories / 100)).toInt()
+                                        ((dayRationModel.lunch.calories - dayRationModel.lunch.salad.calories / 100 * dayRationModel.lunch.salad.weight - dayRationModel.lunch.drink.calories / 100 * dayRationModel.lunch.drink.weight) * 0.7).toInt()
                                     dayRationModel.lunch.second = productModel
                                 }
                                 Constants.CATEGORY_HOTTER -> {
                                     val productModel = useCase.getProductByName(name)
                                     productModel.weight =
-                                        (calories / (productModel.calories / 100)).toInt()
+                                        ((dayRationModel.lunch.calories - dayRationModel.lunch.salad.calories / 100 * dayRationModel.lunch.salad.weight - dayRationModel.lunch.drink.calories / 100 * dayRationModel.lunch.drink.weight) * 0.3).toInt()
                                     dayRationModel.lunch.hotter = productModel
                                 }
                                 Constants.CATEGORY_SALADS -> {
                                     val productModel = useCase.getProductByName(name)
-                                    productModel.weight =
-                                        (calories / (productModel.calories / 100)).toInt()
+                                    if ((calories / (productModel.calories / 100)).toInt() != 0)
+                                        productModel.weight =
+                                            (calories / (productModel.calories / 100)).toInt()
+                                    else productModel.weight = 1
                                     dayRationModel.lunch.salad = productModel
                                 }
                                 Constants.CATEGORY_DRINKS -> {
                                     val productModel = useCase.getProductByName(name)
-                                    productModel.weight =
-                                        (calories / (productModel.calories / 100)).toInt()
+                                    if ((calories / (productModel.calories / 100)).toInt() != 0)
+                                        productModel.weight =
+                                            (calories / (productModel.calories / 100)).toInt()
+                                    else productModel.weight = 1
                                     dayRationModel.lunch.drink = productModel
                                 }
                             }
@@ -137,20 +166,24 @@ class RationViewModel(private val useCase: RationUseCase) : ViewModel() {
                             when (category) {
                                 Constants.CATEGORY_SECOND -> {
                                     val productModel = useCase.getProductByName(name)
-                                    productModel.weight =
-                                        (calories / (productModel.calories / 100)).toInt()
                                     dayRationModel.dinner.second = productModel
+                                    dayRationModel.dinner.second.weight =
+                                        (dayRationModel.dinner.calories - dayRationModel.dinner.salad.calories / 100 * dayRationModel.dinner.salad.weight - dayRationModel.dinner.drink.calories / 100 * dayRationModel.dinner.drink.weight).toInt()
                                 }
                                 Constants.CATEGORY_SALADS -> {
                                     val productModel = useCase.getProductByName(name)
-                                    productModel.weight =
-                                        (calories / (productModel.calories / 100)).toInt()
+                                    if ((calories / (productModel.calories / 100)).toInt() != 0)
+                                        productModel.weight =
+                                            (calories / (productModel.calories / 100)).toInt()
+                                    else productModel.weight = 1
                                     dayRationModel.dinner.salad = productModel
                                 }
                                 Constants.CATEGORY_DRINKS -> {
                                     val productModel = useCase.getProductByName(name)
-                                    productModel.weight =
-                                        (calories / (productModel.calories / 100)).toInt()
+                                    if ((calories / (productModel.calories / 100)).toInt() != 0)
+                                        productModel.weight =
+                                            (calories / (productModel.calories / 100)).toInt()
+                                    else productModel.weight = 1
                                     dayRationModel.dinner.drink = productModel
                                 }
                             }

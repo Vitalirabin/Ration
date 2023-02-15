@@ -20,8 +20,6 @@ class ChooseDialog : DialogFragment() {
             val builder = MaterialAlertDialogBuilder(activity)
             builder.setPositiveButton(R.string.yes) { _, _ ->
                 deleteViewModel.deleteProduct()
-                context?.getSharedPreferences(Constants.NAME_SP, Context.MODE_PRIVATE)?.edit()
-                    ?.putInt("lastCalories", 0)?.apply()
                 Toast.makeText(
                     context,
                     getString(R.string.deleted_product),
